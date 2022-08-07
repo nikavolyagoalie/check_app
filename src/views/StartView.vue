@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <h1>Приложение для тайных покупателей</h1>
-        <button @click="$router.push('/auth')">Далее</button>
+        <button @click="$router.push('/signup')">Далее</button>
     </div>
 </template>
 

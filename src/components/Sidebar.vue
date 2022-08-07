@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <div @click="back">Выйти</div>
     <div class="sidebar__toolbar">
       <div class="sidebar__logo">My Check</div>
       <ul class="sidebar__links">
@@ -32,6 +33,17 @@ export default {
       ],
     };
   },
+  computed: {
+    logIn() {
+      return this.$store.state.logIn;
+    },
+  },
+  methods: {
+    back() {
+      this.$store.state.logIn = false
+      this.$router.push('/login')
+    }
+  }
 };
 </script>
 
