@@ -2,6 +2,7 @@
   <div>
     {{ logIn }}
     <div class="page login">
+      <button @click="vkLogin">Войти с VK</button>
       <form class="login__form" @submit.prevent="handlerSubmit">
         <h2>Вход</h2>
         <!-- <label>
@@ -28,6 +29,7 @@
         <button type="submit" :disabled="isDisabled">Войти</button>
         <div v-if="notValidForm">Логин и/или пароль введены не верно</div>
       </form>
+      <button @click="$router.push('/reset')">Забыли пароль?</button>
     </div>
     <p>
       Нет аккауна? Тогда
@@ -37,6 +39,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Login",
   data() {
@@ -49,6 +52,9 @@ export default {
     };
   },
   methods: {
+    vkLogin() {
+      this.$store.dispatch("getToken");
+    },
     handlerSubmit() {
       const user = {
         email: this.email,
@@ -72,7 +78,7 @@ export default {
     logIn() {
       return this.$store.state.logIn;
     },
-    
+
     emailValid() {
       if (
         this.email?.includes("@") &&
@@ -89,7 +95,7 @@ export default {
         return true;
       } else {
         return false;
-      }
+      } 
     },
     isDisabled() {
       if (this.password.length > 0 && this.email.length > 0) {
@@ -103,13 +109,14 @@ export default {
     logIn: {
       handler(newValue, oldValue) {
         if (newValue !== oldValue) {
-          this.$router.push('/checks')
+          this.$router.push("/checks");
         }
       },
-      deep: true
-    }
-  }
+      deep: true,
+    },
+  },
 };
+
 </script>
 
 <style lang="scss" scoped>

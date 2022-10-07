@@ -1,9 +1,10 @@
 import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from '@/App.vue'
+import router from '@/router'
+import store from '@/store'
+// import components from './components/UI'
 
-import firebase from "firebase/app";
+import firebase from "firebase/app";  
 
 const firebaseConfig = {
   apiKey: "AIzaSyBhVj6a2gZdRBuS6iKTAgqW3X0Y_6dfZUs",
@@ -16,7 +17,13 @@ const firebaseConfig = {
   measurementId: "G-0P18VNL73M"
 };
 
+const app = createApp(App)
+
+// components.forEach(component => {
+//   app.component(component.name, component)
+// })
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-createApp(App).use(store).use(router).mount('#app')
+app.use(store).use(router).mount('#app')

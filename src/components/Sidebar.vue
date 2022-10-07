@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar">
+    <div>{{ UID }}</div>
     <div @click="back">Выйти</div>
     <div class="sidebar__toolbar">
       <div class="sidebar__logo">My Check</div>
@@ -37,6 +38,10 @@ export default {
     logIn() {
       return this.$store.state.logIn;
     },
+
+    UID() {
+      return this.$store.state.uid;
+    }
   },
   methods: {
     back() {
